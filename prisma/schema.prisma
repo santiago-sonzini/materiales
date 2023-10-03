@@ -6,16 +6,15 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
+    provider = "postgresql"
     url      = env("DATABASE_URL")
 }
 
 model Prueba {
     id        Int      @id @default(autoincrement())
-    name      String
     sigma     Float
+    densidad  Int @default(10)
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    @@index([name])
 }
