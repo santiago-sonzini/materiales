@@ -62,6 +62,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     
       
         default:
+          try {
+            const ensayos:Prueba[] =  await db.prueba.findMany({})
+            console.log('==================================== ensayo api');
+            console.log(ensayos);
+            console.log('====================================');
+
+            return res.status(200).json(ensayos)
+          } catch (error) {
+            return res.status(500).json({message: "no data"})
+
+          }
+
           break;
       }
        
